@@ -1,12 +1,12 @@
 pandas
-numpy 
-seaborn 
+numpy
+seaborn
 matplotlib
 plotly
 scikit-learn
 scipy
 imblearn
-catboost 
+catboost
 xgboost
 pymongo
 from_root
@@ -21,4 +21,3 @@ fastapi
 uvicorn
 jinja2
 python-multipart
--e .
