@@ -43,3 +43,14 @@ git add .
 git commit -m "Your commit message"
 git push origin main
 ```
+
+## How to Work
+
+Use the following commands to start the project
+
+```bash
+conda create venv python == 3.8 -y
+conda activate
+pip install -r requirements.txt
+
+```
