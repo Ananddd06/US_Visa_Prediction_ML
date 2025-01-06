@@ -1,6 +1,16 @@
 # US_Visa_Prediction_ML
 
+==========================
+
+-VsCode Installation : https://code.visualstudio.com
+-Anaconda: https://www.anaconda.com/
+-Git: https://git-scm.com/
+-Flowchart: https://whimsical.com/
+-Python Installation : https://www.python.org/downloads/
 -MLOps Tool : https://www.evidentlyai.com/
+-Data link: https://www.kaggle.com/datasets/moro23/easyvisa-dataset
+
+==========================
 
 # Git Commands
 
