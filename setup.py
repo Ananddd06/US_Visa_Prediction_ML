@@ -8,20 +8,19 @@ from typing import List
 
 HYPEN_E_DOT = '-e .'
 def get_requirements(file_path : str)->List[str]:
+    logging.info("Requirements stage Entering ")
     requirements = []
     try:
         with open(file_path) as file_obj:
             requirements = file_obj.readlines()
-            requirements = [req.replace("\n" , "") for req in requirements]
+            requirements = [req.replace("/n" , "") for req in requirements]
 
             if HYPEN_E_DOT in requirements:
                 requirements.remove(HYPEN_E_DOT)
         
-        logging.info("The requirements is Done successfully")
+        logging.info("The requirements setup is done completely ")
     except Exception as e:
         raise Custom_Exception(e , sys)
-    
-    return requirements
 
 setup(
     name = "us_visa" ,
