@@ -10,6 +10,12 @@ ARTIFACT_DIR : str = 'artifact'
 
 MODEL_FILE_NAME = "model.pkl"
 
+TRAIN_FILE_NAME: str = "train.csv"
+TEST_FILE_NAME: str = "test.csv"
+
+FILE_NAME: str = "usvisa.csv"
+MODEL_FILE_NAME = "model.pkl"
+
 
 """
 Data ingestion releated constants start with the DATA_INGESTION var name

@@ -1,3 +1,3 @@
-import os 
-MONGO_DB_URL = os.getenv("MONGODB_URL")
-print(MON)
+from us_visa.pipeline.training_pipeline import TrainPipeline
+obj = TrainPipeline()
+obj.run_pipeline()
