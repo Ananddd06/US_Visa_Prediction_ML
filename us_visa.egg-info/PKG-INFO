@@ -3,26 +3,3 @@ Name: us_visa
 Version: 1.0.0
 Author: Anand J
 Author-email: anand06.jeyakumar@gmail.com
-Requires-Dist: pandas
-Requires-Dist: numpy
-Requires-Dist: seaborn
-Requires-Dist: matplotlib
-Requires-Dist: plotly
-Requires-Dist: scikit-learn
-Requires-Dist: scipy
-Requires-Dist: imblearn
-Requires-Dist: catboost
-Requires-Dist: xgboost
-Requires-Dist: pymongo
-Requires-Dist: from_root
-Requires-Dist: evidently==0.2.8
-Requires-Dist: dill
-Requires-Dist: PyYAML
-Requires-Dist: neuro_mf
-Requires-Dist: boto3
-Requires-Dist: mypy-boto3-s3
-Requires-Dist: botocore
-Requires-Dist: fastapi
-Requires-Dist: uvicorn
-Requires-Dist: jinja2
-Requires-Dist: python-multipart

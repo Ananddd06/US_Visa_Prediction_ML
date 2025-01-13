@@ -4,7 +4,6 @@ us_visa/__init__.py
 us_visa.egg-info/PKG-INFO
 us_visa.egg-info/SOURCES.txt
 us_visa.egg-info/dependency_links.txt
-us_visa.egg-info/requires.txt
 us_visa.egg-info/top_level.txt
 us_visa/components/__init__.py
 us_visa/components/data_ingestion.py
@@ -14,6 +13,7 @@ us_visa/components/model_evaluation.py
 us_visa/components/model_pusher.py
 us_visa/components/model_trainer.py
 us_visa/configuration/__init__.py
+us_visa/configuration/mongodb_connection.py
 us_visa/constants/__init__.py
 us_visa/entity/__init__.py
 us_visa/entity/artifact_entity.py
