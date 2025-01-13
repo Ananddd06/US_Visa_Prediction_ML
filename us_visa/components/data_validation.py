@@ -12,6 +12,8 @@ from us_visa.entity.artifact_entity import DataIngestionArtifact, DataValidation
 from us_visa.entity.config_entity import DataValidationConfig
 from us_visa.constants import SCHEMA_FILE_PATH
 
+
+## defining the class data validation 
 class DataValidation:
     def __init__(self, data_ingestion_artifact: DataIngestionArtifact, data_validation_config: DataValidationConfig):
         try:
@@ -21,6 +23,7 @@ class DataValidation:
         except Exception as e:
             raise Custom_Exception(e, sys)
 
+    # To find the no of columns are there in the data set 
     def validate_no_of_columns(self, dataframe: DataFrame) -> bool:
         try:
             status = len(dataframe.columns) == len(self.schema_config["columns"])
@@ -29,6 +32,8 @@ class DataValidation:
         except Exception as e:
             raise Custom_Exception(e, sys)
 
+
+    # Need to check if there is any missing numerical data or categorial features 
     def is_column_exist(self, df: DataFrame) -> bool:
         try:
             dataframe_columns = df.columns
@@ -60,7 +65,9 @@ class DataValidation:
             return pd.read_csv(file_path)
         except Exception as e:
             raise Custom_Exception(e, sys)
+    
 
+    # Detect the dataset drift using the Ecentricity ai 
     def detect_dataset_drift(self, reference_df: DataFrame, current_df: DataFrame) -> bool:
         try:
             # Using Report and DataDriftPreset from Evidently
