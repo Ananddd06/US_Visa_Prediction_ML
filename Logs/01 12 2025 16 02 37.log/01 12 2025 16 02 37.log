@@ -1,5 +1,0 @@
-[ 2025-01-12 16:02:37,734 ] 160 numexpr.utils - INFO - NumExpr defaulting to 8 threads.
-[ 2025-01-12 16:02:38,252 ] 14 root - INFO - Entered the start_data_ingestion of the TrainPipeline Class
-[ 2025-01-12 16:02:38,252 ] 15 root - INFO - Getting the data from the mongoDb
-[ 2025-01-12 16:02:38,252 ] 49 root - INFO - Initiating Data Ingestion
-[ 2025-01-12 16:02:38,252 ] 21 root - INFO - Exporting data into MongoDb
