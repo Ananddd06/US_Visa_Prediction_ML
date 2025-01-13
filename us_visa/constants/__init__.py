@@ -39,3 +39,10 @@ Data validation releated constants start with the DATA_VALIDATION var name
 DATA_VALIDATION_DIR_NAME : str = "data_validation"
 DATA_VALIDATION_DRIFT_REPORT_DIR : str = "drift_report"
 DATA_VALIDATION_DRIFT_REPORT_FILE_NAME : str = "report.yaml"
+
+"""
+Data transformation releated constants start with the DATA_TRANSFORMATION var name
+
+"""
+DATA_TRANSFORMATION_DIR_NAME : str = "data_transformation"
+
