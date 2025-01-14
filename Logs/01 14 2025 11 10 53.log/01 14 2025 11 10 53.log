@@ -1,0 +1,45 @@
+[ 2025-01-14 11:10:53,715 ] 160 numexpr.utils - INFO - NumExpr defaulting to 8 threads.
+[ 2025-01-14 11:10:55,350 ] 18 root - INFO - Entered the start_data_ingestion of the TrainPipeline Class
+[ 2025-01-14 11:10:55,350 ] 19 root - INFO - Getting the data from MongoDB
+[ 2025-01-14 11:10:55,350 ] 55 root - INFO - Initiating Data Ingestion
+[ 2025-01-14 11:10:55,350 ] 23 root - INFO - Exporting data into MongoDb
+[ 2025-01-14 11:10:55,621 ] 29 root - INFO - Database connection is successful
+[ 2025-01-14 11:11:07,790 ] 26 root - INFO - Shape of the dataset: (25480, 12)
+[ 2025-01-14 11:11:07,791 ] 30 root - INFO - Saving exported data into feature store file path: artifact/01_14_2025_11_10_55/data_ingestion/feature_store/usvisa.csv
+[ 2025-01-14 11:11:07,886 ] 59 root - INFO - Got the data from MongoDB
+[ 2025-01-14 11:11:07,886 ] 37 root - INFO - Entered split_data_as_train_and_test method of the Data Ingestion class
+[ 2025-01-14 11:11:07,892 ] 41 root - INFO - Split the data frame successfully
+[ 2025-01-14 11:11:07,892 ] 47 root - INFO - Exporting the data frame into train and test data frames
+[ 2025-01-14 11:11:07,984 ] 50 root - INFO - Exported the data frame into train and test datasets
+[ 2025-01-14 11:11:07,985 ] 63 root - INFO - Executed the train-test split
+[ 2025-01-14 11:11:07,986 ] 64 root - INFO - Exited initiate_data_ingestion method of DataIngestion class
+[ 2025-01-14 11:11:07,986 ] 71 root - INFO - Data ingestion artifact: DataIngestionArtifact(trained_file_path='artifact/01_14_2025_11_10_55/data_ingestion/ingested/train.csv', test_file_path='artifact/01_14_2025_11_10_55/data_ingestion/ingested/test.csv')
+[ 2025-01-14 11:11:07,991 ] 22 root - INFO - Got the train and the test set from MongoDB
+[ 2025-01-14 11:11:07,991 ] 23 root - INFO - Excited about the Data Ingestion workflow
+[ 2025-01-14 11:11:07,991 ] 29 root - INFO - Entered the start_data_validation of the TrainPipeline Class
+[ 2025-01-14 11:11:07,994 ] 101 root - INFO - Started the Data Validation flow
+[ 2025-01-14 11:11:08,029 ] 110 root - INFO - Training DataFrame shape: (20384, 12)
+[ 2025-01-14 11:11:08,030 ] 111 root - INFO - Testing DataFrame shape: (5096, 12)
+[ 2025-01-14 11:11:08,030 ] 28 root - INFO - Is required column present: True
+[ 2025-01-14 11:11:08,030 ] 115 root - INFO - All required columns present in training dataframe: True
+[ 2025-01-14 11:11:08,030 ] 28 root - INFO - Is required column present: True
+[ 2025-01-14 11:11:08,030 ] 120 root - INFO - All required columns present in testing dataframe: True
+[ 2025-01-14 11:11:08,031 ] 91 root - INFO - No drift detected in numerical columns.
+[ 2025-01-14 11:11:08,031 ] 150 root - INFO - Data validation artifact: DataValidationArtifact(validation_status=True, message='Drift not detected', drift_report_file_path='artifact/01_14_2025_11_10_55/data_validation/drift_report/report.yaml')
+[ 2025-01-14 11:11:08,032 ] 36 root - INFO - Performed the data validation operation
+[ 2025-01-14 11:11:08,032 ] 37 root - INFO - Exited the start_data_validation method of TrainPipeline class
+[ 2025-01-14 11:11:08,032 ] 43 root - INFO - Entered the start_data_transformation of the TrainPipeline Class
+[ 2025-01-14 11:11:08,035 ] 76 root - INFO - Starting data transformation.
+[ 2025-01-14 11:11:08,035 ] 42 root - INFO - Entered the data transformer object creation.
+[ 2025-01-14 11:11:08,035 ] 56 root - INFO - Setting up ColumnTransformer.
+[ 2025-01-14 11:11:08,035 ] 66 root - INFO - Preprocessor object created successfully.
+[ 2025-01-14 11:11:08,070 ] 82 root - INFO - Splitting input and target features for train and test datasets.
+[ 2025-01-14 11:11:08,073 ] 83 root - INFO - Entered drop column of the Utils
+[ 2025-01-14 11:11:08,074 ] 86 root - INFO - Exited the drop columns of the method Utils
+[ 2025-01-14 11:11:08,074 ] 83 root - INFO - Entered drop column of the Utils
+[ 2025-01-14 11:11:08,075 ] 86 root - INFO - Exited the drop columns of the method Utils
+[ 2025-01-14 11:11:09,890 ] 68 root - INFO - Enter the save method object of the utils
+[ 2025-01-14 11:11:09,895 ] 77 root - INFO - Exited the save object from the utils
+[ 2025-01-14 11:11:09,897 ] 128 root - INFO - Data transformation completed successfully.
+[ 2025-01-14 11:11:09,900 ] 51 root - INFO - Started the data transformation operation
+[ 2025-01-14 11:11:09,900 ] 52 root - INFO - Exited the start_data_transformation method of TrainPipeline class

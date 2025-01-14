@@ -3,13 +3,15 @@ from us_visa.exception import Custom_Exception
 from us_visa.logger import logging
 from us_visa.components.data_ingestion import DataIngestion
 from us_visa.components.data_validation import DataValidation
-from us_visa.entity.config_entity import DataIngestionConfig, DataValidationConfig
-from us_visa.entity.artifact_entity import DataIngestionArtifact, DataValidationArtifact
+from us_visa.components.data_tranformation import DataTransformation
+from us_visa.entity.config_entity import DataIngestionConfig, DataValidationConfig , DataTransformationConfig
+from us_visa.entity.artifact_entity import DataIngestionArtifact, DataValidationArtifact , DataTransformationArtifact
 
 class TrainPipeline:
     def __init__(self):
         self.data_ingestion_config = DataIngestionConfig()
         self.data_validation_config = DataValidationConfig()
+        self.data_transformation_config = DataTransformationConfig()
     
     def start_data_ingestion(self) -> DataIngestionArtifact:
         try:

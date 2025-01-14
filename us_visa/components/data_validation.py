@@ -3,8 +3,6 @@ import os
 import sys
 import pandas as pd
 from pandas import DataFrame
-from evidently.report import Report
-from evidently.metric_preset import DataDriftPreset
 from us_visa.logger import logging
 from us_visa.exception import Custom_Exception
 from us_visa.utils.main_utils import read_yaml_file, write_yaml_file
@@ -23,7 +21,7 @@ class DataValidation:
         except Exception as e:
             raise Custom_Exception(e, sys)
 
-    # To find the no of columns are there in the data set 
+    # To find the no of columns in the dataset
     def validate_no_of_columns(self, dataframe: DataFrame) -> bool:
         try:
             status = len(dataframe.columns) == len(self.schema_config["columns"])
@@ -32,8 +30,7 @@ class DataValidation:
         except Exception as e:
             raise Custom_Exception(e, sys)
 
-
-    # Need to check if there is any missing numerical data or categorial features 
+    # Check if any columns are missing from numerical or categorical features
     def is_column_exist(self, df: DataFrame) -> bool:
         try:
             dataframe_columns = df.columns
@@ -65,51 +62,38 @@ class DataValidation:
             return pd.read_csv(file_path)
         except Exception as e:
             raise Custom_Exception(e, sys)
-    
 
-    # Detect the dataset drift using the Ecentricity ai 
+    # Manually detect dataset drift by comparing statistical features of the numerical columns
     def detect_dataset_drift(self, reference_df: DataFrame, current_df: DataFrame) -> bool:
         try:
-            # Using Report and DataDriftPreset from Evidently
-            report = Report(metrics=[DataDriftPreset()])
-            report.run(reference_data=reference_df, current_data=current_df)
-            report_json = report.json()
+            drift_status = False
 
-            logging.info(f"Drift report JSON: {report_json}")
+            # Compare means and standard deviations of numerical columns between reference and current datasets
+            numerical_columns = self.schema_config["numerical_columns"]
 
-            # Saving the drift report to YAML
-            # Fix: Ensure the report is in a valid format for json.loads()
-            try:
-                json_report = json.loads(report_json)  # Parse JSON string to a dictionary
-            except json.JSONDecodeError as json_err:
-                logging.error(f"JSONDecodeError while processing the drift report: {json_err}")
-                raise Custom_Exception(f"JSONDecodeError: {json_err}", sys)
+            for column in numerical_columns:
+                if column in reference_df.columns and column in current_df.columns:
+                    ref_mean = reference_df[column].mean()
+                    ref_std = reference_df[column].std()
 
-            write_yaml_file(file_path=self.data_validation_config.drift_report_file_name, content=json_report)
+                    curr_mean = current_df[column].mean()
+                    curr_std = current_df[column].std()
 
-            # Ensure that 'data_drift' exists in the report before accessing it
-            if "data_drift" in json_report:
-                # Extracting metrics safely
-                data_drift = json_report["data_drift"]
-                if "data" in data_drift and "metrics" in data_drift["data"]:
-                    metrics = data_drift["data"]["metrics"]
-                    n_features = metrics.get("n_features", 0)
-                    n_drifted_features = metrics.get("n_drifted_features", 0)
-                    logging.info(f"{n_drifted_features}/{n_features} drift detected.")
+                    # Set a threshold for drift (e.g., 10% difference in mean or standard deviation)
+                    mean_diff = abs(ref_mean - curr_mean) / ref_mean
+                    std_diff = abs(ref_std - curr_std) / ref_std
 
-                    # Return the drift status, with a fallback if it's not available
-                    drift_status = metrics.get("dataset_drift", False)
-                    return drift_status
-                else:
-                    logging.error("Metrics missing in the 'data_drift' section of the report.")
-                    raise Custom_Exception("Missing 'metrics' in the drift report", sys)
-            else:
-                logging.error("'data_drift' key not found in the drift report.")
-                raise Custom_Exception("'data_drift' key missing in drift report", sys)
+                    if mean_diff > 0.1 or std_diff > 0.1:  # 10% difference
+                        drift_status = True
+                        logging.info(f"Drift detected in column: {column}. Mean diff: {mean_diff:.2f}, Std diff: {std_diff:.2f}")
+            
+            if not drift_status:
+                logging.info("No drift detected in numerical columns.")
 
+            return drift_status
         except Exception as e:
             logging.error(f"Error in detect_dataset_drift: {e}")
-            raise Custom_Exception(sys,e)
+            raise Custom_Exception(sys, e)
 
     def initiate_data_validation(self) -> DataValidationArtifact:
         try:
@@ -161,7 +145,7 @@ class DataValidation:
             data_validation_artifact = DataValidationArtifact(
                 validation_status=validation_status,
                 message=validation_error_msg,
-                drift_report_file_path=self.data_validation_config.drift_report_file_path
+                drift_report_file_path=self.data_validation_config.drift_report_file_name
             )
             logging.info(f"Data validation artifact: {data_validation_artifact}")
             return data_validation_artifact
