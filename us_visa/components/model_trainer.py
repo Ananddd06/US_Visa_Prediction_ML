@@ -6,11 +6,11 @@ import pandas as pd
 from pandas import DataFrame
 from sklearn.pipeline import Pipeline
 from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score
-from neuro_mf  import ModelFactory
+from neuro_mf import ModelFactory
 
 from us_visa.exception import Custom_Exception
 from us_visa.logger import logging
-from us_visa.utils.main_utils import load_numpy_array_data, read_yaml_file, load_object, save_obj
+from us_visa.utils.main_utils import load_numpy_array_data, read_yaml_file, load_obj, save_obj
 from us_visa.entity.config_entity import ModelTrainerConfig
 from us_visa.entity.artifact_entity import DataTransformationArtifact, ModelTrainerArtifact, ClassificationMetricArtifact
 from us_visa.entity.estimator import USvisaModel
@@ -73,7 +73,7 @@ class ModelTrainer:
             
             best_model_detail ,metric_artifact = self.get_model_object_and_report(train=train_arr, test=test_arr)
             
-            preprocessing_obj = load_object(file_path=self.data_transformation_artifact.transformed_object_file_path)
+            preprocessing_obj = load_obj(file_path=self.data_transformation_artifact.transformed_object_file_path)
 
 
             if best_model_detail.best_score < self.model_trainer_config.expected_accuracy:
@@ -84,7 +84,7 @@ class ModelTrainer:
                                        trained_model_object=best_model_detail.best_model)
             logging.info("Created usvisa model object with preprocessor and model")
             logging.info("Created best model file path.")
-            save_object(self.model_trainer_config.trained_model_file_path, usvisa_model)
+            save_obj(self.model_trainer_config.trained_model_file_path, usvisa_model)
 
             model_trainer_artifact = ModelTrainerArtifact(
                 trained_model_file_path=self.model_trainer_config.trained_model_file_path,
