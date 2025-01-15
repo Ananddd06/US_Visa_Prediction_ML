@@ -1,0 +1,61 @@
+[ 2025-01-15 22:10:20,546 ] 160 numexpr.utils - INFO - NumExpr defaulting to 8 threads.
+[ 2025-01-15 22:10:25,464 ] 84 root - INFO - Starting the training pipeline.
+[ 2025-01-15 22:10:25,464 ] 20 root - INFO - Starting data ingestion phase of the TrainPipeline.
+[ 2025-01-15 22:10:25,464 ] 55 root - INFO - Initiating Data Ingestion
+[ 2025-01-15 22:10:25,464 ] 23 root - INFO - Exporting data into MongoDb
+[ 2025-01-15 22:10:28,110 ] 29 root - INFO - Database connection is successful
+[ 2025-01-15 22:10:57,248 ] 26 root - INFO - Shape of the dataset: (25480, 12)
+[ 2025-01-15 22:10:57,249 ] 30 root - INFO - Saving exported data into feature store file path: artifact/01_15_2025_22_10_22/data_ingestion/feature_store/usvisa.csv
+[ 2025-01-15 22:10:57,344 ] 59 root - INFO - Got the data from MongoDB
+[ 2025-01-15 22:10:57,344 ] 37 root - INFO - Entered split_data_as_train_and_test method of the Data Ingestion class
+[ 2025-01-15 22:10:57,350 ] 41 root - INFO - Split the data frame successfully
+[ 2025-01-15 22:10:57,350 ] 47 root - INFO - Exporting the data frame into train and test data frames
+[ 2025-01-15 22:10:57,442 ] 50 root - INFO - Exported the data frame into train and test datasets
+[ 2025-01-15 22:10:57,444 ] 63 root - INFO - Executed the train-test split
+[ 2025-01-15 22:10:57,444 ] 64 root - INFO - Exited initiate_data_ingestion method of DataIngestion class
+[ 2025-01-15 22:10:57,444 ] 71 root - INFO - Data ingestion artifact: DataIngestionArtifact(trained_file_path='artifact/01_15_2025_22_10_22/data_ingestion/ingested/train.csv', test_file_path='artifact/01_15_2025_22_10_22/data_ingestion/ingested/test.csv')
+[ 2025-01-15 22:10:57,448 ] 23 root - INFO - Data ingestion completed successfully.
+[ 2025-01-15 22:10:57,449 ] 30 root - INFO - Starting data validation phase of the TrainPipeline.
+[ 2025-01-15 22:10:57,451 ] 249 root - INFO - Starting data validation.
+[ 2025-01-15 22:10:57,484 ] 157 root - INFO - Is required column present: [True]
+[ 2025-01-15 22:10:57,484 ] 157 root - INFO - Is required column present: [True]
+[ 2025-01-15 22:10:57,484 ] 216 root - INFO - Starting data drift detection using Evidently.
+[ 2025-01-15 22:11:43,180 ] 233 root - INFO - 1/12 features show drift.
+[ 2025-01-15 22:11:43,181 ] 282 root - INFO - Data validation artifact created: DataValidationArtifact(validation_status=False, message='Data drift detected. ', drift_report_file_path='artifact/01_15_2025_22_10_22/data_validation/drift_report/report.yaml')
+[ 2025-01-15 22:11:43,181 ] 36 root - INFO - Data validation completed successfully.
+[ 2025-01-15 22:11:43,181 ] 43 root - INFO - Starting data transformation phase of the TrainPipeline.
+[ 2025-01-15 22:11:43,185 ] 76 root - INFO - Starting data transformation.
+[ 2025-01-15 22:11:43,185 ] 42 root - INFO - Entered the data transformer object creation.
+[ 2025-01-15 22:11:43,185 ] 56 root - INFO - Setting up ColumnTransformer.
+[ 2025-01-15 22:11:43,185 ] 66 root - INFO - Preprocessor object created successfully.
+[ 2025-01-15 22:11:43,228 ] 82 root - INFO - Splitting input and target features for train and test datasets.
+[ 2025-01-15 22:11:43,231 ] 83 root - INFO - Entered drop column of the Utils
+[ 2025-01-15 22:11:43,232 ] 86 root - INFO - Exited the drop columns of the method Utils
+[ 2025-01-15 22:11:43,232 ] 83 root - INFO - Entered drop column of the Utils
+[ 2025-01-15 22:11:43,233 ] 86 root - INFO - Exited the drop columns of the method Utils
+[ 2025-01-15 22:11:44,613 ] 68 root - INFO - Enter the save method object of the utils
+[ 2025-01-15 22:11:44,618 ] 77 root - INFO - Exited the save object from the utils
+[ 2025-01-15 22:11:44,620 ] 128 root - INFO - Data transformation completed successfully.
+[ 2025-01-15 22:11:44,624 ] 50 root - INFO - Data transformation completed successfully.
+[ 2025-01-15 22:11:44,624 ] 57 root - INFO - Starting model training phase of the TrainPipeline.
+[ 2025-01-15 22:11:44,624 ] 62 root - INFO - Entered initiate_model_trainer method of ModelTrainer class
+[ 2025-01-15 22:11:44,626 ] 37 root - INFO - Using neuro_mf to get best model object and report
+[ 2025-01-15 22:11:44,630 ] 242 neuro_mf - INFO - Started Initializing model from config file
+[ 2025-01-15 22:11:44,630 ] 59 neuro_mf - INFO - {'algorithm': 'kd_tree', 'weights': 'uniform', 'n_neighbors': 3}
+[ 2025-01-15 22:11:44,631 ] 59 neuro_mf - INFO - {'max_depth': 10, 'max_features': 'sqrt', 'n_estimators': 3}
+[ 2025-01-15 22:11:44,633 ] 244 neuro_mf - INFO - Initialized model: [InitializedModelDetail(model_serial_number='module_0', model=KNeighborsClassifier(algorithm='kd_tree', n_neighbors=3), param_grid_search={'algorithm': ['auto', 'ball_tree', 'kd_tree', 'brute'], 'weights': ['uniform', 'distance'], 'n_neighbors': [3, 5, 9]}, model_name='sklearn.neighbors.KNeighborsClassifier'), InitializedModelDetail(model_serial_number='module_1', model=RandomForestClassifier(max_depth=10, n_estimators=3), param_grid_search={'max_depth': [10, 15, 20], 'max_features': ['sqrt', 'log2'], 'n_estimators': [3, 5, 9]}, model_name='sklearn.ensemble.RandomForestClassifier')]
+[ 2025-01-15 22:11:44,633 ] 106 neuro_mf - INFO - ('**************************************************', 'training KNeighborsClassifier', '**************************************************')
+[ 2025-01-15 22:11:44,633 ] 59 neuro_mf - INFO - {'cv': 3, 'verbose': 3}
+[ 2025-01-15 22:12:02,613 ] 106 neuro_mf - INFO - ('**************************************************', 'training RandomForestClassifier', '**************************************************')
+[ 2025-01-15 22:12:02,614 ] 59 neuro_mf - INFO - {'cv': 3, 'verbose': 3}
+[ 2025-01-15 22:12:06,179 ] 223 neuro_mf - INFO - Acceptable model found:GridSearchedBestModel(model_serial_number='module_0', model=KNeighborsClassifier(algorithm='kd_tree', n_neighbors=3), best_model=KNeighborsClassifier(n_neighbors=3, weights='distance'), best_parameters={'algorithm': 'auto', 'n_neighbors': 3, 'weights': 'distance'}, best_score=0.9568904816792948)
+[ 2025-01-15 22:12:06,179 ] 229 neuro_mf - INFO - Best model: GridSearchedBestModel(model_serial_number='module_0', model=KNeighborsClassifier(algorithm='kd_tree', n_neighbors=3), best_model=KNeighborsClassifier(n_neighbors=3, weights='distance'), best_parameters={'algorithm': 'auto', 'n_neighbors': 3, 'weights': 'distance'}, best_score=0.9568904816792948)
+[ 2025-01-15 22:12:06,237 ] 37 root - INFO - Entered the load object method of Utils
+[ 2025-01-15 22:12:06,238 ] 41 root - INFO - Exited the load object from the method utils
+[ 2025-01-15 22:12:06,238 ] 85 root - INFO - Created usvisa model object with preprocessor and model
+[ 2025-01-15 22:12:06,238 ] 86 root - INFO - Created best model file path.
+[ 2025-01-15 22:12:06,238 ] 68 root - INFO - Enter the save method object of the utils
+[ 2025-01-15 22:12:06,242 ] 77 root - INFO - Exited the save object from the utils
+[ 2025-01-15 22:12:06,242 ] 93 root - INFO - Model trainer artifact: ModelTrainerArtifact(trained_model_file_path='artifact/01_15_2025_22_10_22/model_trainer/trained_model/model.pkl', metric_artifact=ClassificationMetricArtifact(f1_score=0.8064261258888596, precision_score=0.8311617806731814, recall_score=0.7831202046035806))
+[ 2025-01-15 22:12:06,242 ] 63 root - INFO - Model training completed successfully.
+[ 2025-01-15 22:12:06,242 ] 92 root - INFO - Training pipeline completed successfully.
