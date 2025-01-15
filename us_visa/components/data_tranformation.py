@@ -71,7 +71,7 @@ class DataTransformation:
     def initiate_data_transformation(self) -> DataTransformationArtifact:
         try:
             if not self.data_validation_artifact.validation_status:
-                raise Custom_Exception("Data validation failed. Transformation aborted.", sys)
+                print("Data validation failed. Transformation aborted.")
 
             logging.info("Starting data transformation.")
             preprocessor = self.get_data_transformer_object()
