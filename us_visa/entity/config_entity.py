@@ -43,11 +43,3 @@ class ModelTrainerConfig:
     expected_accuracy: float = MODEL_TRAINER_EXPECTED_SCORE
     model_config_file_path: str = MODEL_TRAINER_MODEL_CONFIG_FILE_PATH
 
-@dataclass
-class ModelEvaluationConfig:
-    changed_threshold_score: float = MODEL_EVALUATION_CHANGED_THRESHOLD_SCORE
-    
-
-@dataclass
-class USvisaPredictorConfig:
-    model_file_path: str = MODEL_FILE_NAME

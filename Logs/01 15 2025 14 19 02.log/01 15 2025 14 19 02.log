@@ -1,0 +1,6 @@
+[ 2025-01-15 14:19:03,265 ] 160 numexpr.utils - INFO - NumExpr defaulting to 8 threads.
+[ 2025-01-15 14:19:04,915 ] 86 root - INFO - Starting the training pipeline.
+[ 2025-01-15 14:19:04,915 ] 22 root - INFO - Starting data ingestion phase of the TrainPipeline.
+[ 2025-01-15 14:19:04,915 ] 55 root - INFO - Initiating Data Ingestion
+[ 2025-01-15 14:19:04,915 ] 23 root - INFO - Exporting data into MongoDb
+[ 2025-01-15 14:19:04,967 ] 100 root - ERROR - Error occurred during the training pipeline.

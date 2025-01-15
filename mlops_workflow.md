@@ -237,6 +237,10 @@ Now that the data has been ingested, cleaned, and validated, it's time to move t
 
 ---
 
+---
+
+---
+
 ## **Next Steps** 🚀
 
 After completing these stages, continue with the following steps in the project lifecycle:
