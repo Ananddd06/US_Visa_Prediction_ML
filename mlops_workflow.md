@@ -1,114 +1,63 @@
-# 🌟 **Project Workflow Guide** 🌟
+# 🌟 Project Workflow Guide 🌟
 
-Welcome to the project! Here's your step-by-step guide to get started and understand the workflow.
-
----
-
-## **Step 1: Initial Setup** 🛠️
-
-Let's kickstart the project with a solid foundation! 🎉
-
-### 1. **Initialize a Git Repository** 📁
-
-- Set up a Git repository to track changes and maintain version control. 🧑‍💻
-- Commit all initial files to ensure smooth collaboration.
-
-### 2. **Core Files to Add** 📝
-
-- **`requirements.txt`**: List all the dependencies and libraries required for the project. 📦
-- **`setup.py`**: Contains the setup script for installing dependencies and configuring the project. 🏗️
-- **`README.md`**: A markdown file that provides an overview of the project, setup instructions, and usage guidelines. 📚
-
-### 3. **Automating Directory and File Creation** 🗂️
-
-- Use a **template file** to define the necessary directory structure and files.
-- Iterate over the list of directories and files using a loop:
-  - Split the directory and file names with `os.path.split(data_dir, datafile)`.
-  - Use `os.mkdir()` to create directories.
-  - Check if the file exists and open it using `with open(file_name, "w")` if not.
+Welcome! Follow these steps to get started with the project.
 
 ---
 
-## **Step 2: Setup Script** ⚙️
+## 1. Initial Setup 🛠️
 
-### 1. **Package Installation** 🧑‍🔧
-
-- Write a function to install all dependencies listed in the `requirements.txt` file.
-
-### 2. **Setup Function** 🔧
-
-- Include key details such as:
-  - Author name ✍️
-  - Author email 📧
-  - Project name 📜
-- Call the function to install the required packages.
+- **Initialize Git**: Set up a Git repository for version control and commit initial files.
+- **Core Files**:
+  - `requirements.txt`: Lists project dependencies.
+  - `setup.py`: Contains the installation and configuration setup.
+  - `README.md`: Overview, setup instructions, and usage guidelines.
 
 ---
 
-## **Step 3: Exception Handling and Logging** 🔒
+## 2. Automate Directory and File Creation 🗂️
 
-### 1. **Exception Handling** 🚨
-
-- Handle exceptions for:
-  - Missing files 📂: Raise a `FileNotFoundError` if a specified file is not found.
-  - Missing directories 📁: Raise an appropriate error if directories are not found or accessible.
-
-### 2. **Logging** 📖
-
-- Implement a logging system to:
-  - Track the workflow 🔍
-  - Log timestamps and actions for better traceability 🕒
-- Use log files to debug issues efficiently. 🐞
+- Use a template to define the directory structure.
+- Create directories and files programmatically:
+  - Use `os.mkdir()` for directories.
+  - Open missing files with `with open(file_name, "w")`.
 
 ---
 
-## **Step 4: Data Exploration and Model Building** 📊
+## 3. Exception Handling & Logging 🔒
 
-Create a folder named **`Notebook`** for all analysis and modeling tasks. This will include:
-
-### 1. **Attach the Dataset** 📂
-
-- Include the `.csv` file for the project.
-
-### 2. **Perform Exploratory Data Analysis (EDA)** 🔍
-
-- Understand the dataset structure and uncover insights.
-
-### 3. **Feature Engineering** 🧠
-
-- Engineer new features to improve model performance.
-
-### 4. **Model Training and Hyperparameter Tuning** 🤖
-
-- Train models and tune hyperparameters to achieve the best results.
+- **Exception Handling**:
+  - Handle missing files (`FileNotFoundError`) and directories.
+- **Logging**:
+  - Track actions with timestamps.
+  - Store logs for debugging.
 
 ---
 
-## **Step 5: MongoDB Database Connection** 🌐
+## 4. Data Exploration & Model Building 📊
 
-In this step, we connect to the MongoDB database.
-
-### 1. **MongoDB URL Configuration** 🗺️
-
-- In the **config** file, under the `US Visa` folder, make the MongoDB URL connection.
-- Check if a client connection exists. If not, fetch the URL and connect to MongoDB.
-- Convert the data from the MongoDB collection into a pandas dataframe and then to a dictionary format for further processing.
+- **Notebook Folder**: Save all analysis and modeling tasks.
+- **Tasks**:
+  - Attach the dataset (`.csv`).
+  - Perform EDA and feature engineering.
+  - Train models and tune hyperparameters.
 
 ---
 
-## **Step 6: Convert Data Table to CSV File** 💾
+## 5. MongoDB Database Connection 🌐
 
-Create a **data_access** folder where we connect to MongoDB and export the data to a `.csv` file.
-
-### 1. **Function Creation** 🛠️
-
-- Access the MongoDB database, extract the required data, and save it as a CSV file. This file will be used for training and testing data.
+- Configure MongoDB in the `config` file.
+- Fetch data, convert to a pandas DataFrame, and process as a dictionary.
 
 ---
 
-## **Step 7: Workflow Steps** 🔄
+## 6. Export Data to CSV 💾
 
-The overall project follows this workflow:
+- Create a `data_access` folder to handle MongoDB data export.
+- Save data as a `.csv` file for training/testing.
+
+---
+
+## 7. Workflow Structure 🔄
 
 1. **Entity** 🏢
 2. **Artifact** 🏗️
