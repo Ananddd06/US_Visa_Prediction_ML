@@ -65,20 +65,6 @@ class TrainPipeline:
         except Exception as e:
             raise Custom_Exception(e, sys)
 
-    # def start_model_evaluation(self, data_ingestion_artifact: DataIngestionArtifact, model_trainer_artifact: ModelTrainerArtifact) -> ModelEvaluationArtifact:
-    #     try:
-    #         logging.info("Starting model evaluation phase of the TrainPipeline.")
-    #         model_evaluation = ModelEvaluation(
-    #             model_eval_config=self.model_evaluation_config,
-    #             data_ingestion_artifact=data_ingestion_artifact,
-    #             model_trainer_artifact=model_trainer_artifact
-    #         )
-    #         model_evaluation_artifact = model_evaluation.initiate_model_evaluation()
-    #         logging.info("Model evaluation completed successfully.")
-    #         return model_evaluation_artifact
-    #     except Exception as e:
-    #         raise Custom_Exception(e, sys)
-
     def run_pipeline(self) -> None:
         try:
             logging.info("Starting the training pipeline.")
