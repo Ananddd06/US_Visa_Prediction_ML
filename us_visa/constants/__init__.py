@@ -58,4 +58,5 @@ MODEL_TRAINER_EXPECTED_SCORE: float = 0.6
 MODEL_TRAINER_MODEL_CONFIG_FILE_PATH: str = os.path.join("config", "model.yaml")
 
 """
-# Need to write the model evaluation that has to be done after learning some foundatin and making the aws thing .
+MODEL EVALUATION related constant start with MODEL_EVALUATION var name
+"""

@@ -1,0 +1,24 @@
+[ 2025-03-16 10:19:46,920 ] 160 numexpr.utils - INFO - NumExpr defaulting to 8 threads.
+[ 2025-03-16 10:19:51,067 ] 70 root - INFO - Starting the training pipeline.
+[ 2025-03-16 10:19:51,068 ] 20 root - INFO - Starting data ingestion phase of the TrainPipeline.
+[ 2025-03-16 10:19:51,068 ] 55 root - INFO - Initiating Data Ingestion
+[ 2025-03-16 10:19:51,068 ] 23 root - INFO - Exporting data into MongoDb
+[ 2025-03-16 10:19:51,439 ] 29 root - INFO - Database connection is successful
+[ 2025-03-16 10:19:57,220 ] 26 root - INFO - Shape of the dataset: (25480, 12)
+[ 2025-03-16 10:19:57,220 ] 30 root - INFO - Saving exported data into feature store file path: artifact/03_16_2025_10_19_47/data_ingestion/feature_store/usvisa.csv
+[ 2025-03-16 10:19:57,286 ] 59 root - INFO - Got the data from MongoDB
+[ 2025-03-16 10:19:57,286 ] 37 root - INFO - Entered split_data_as_train_and_test method of the Data Ingestion class
+[ 2025-03-16 10:19:57,291 ] 41 root - INFO - Split the data frame successfully
+[ 2025-03-16 10:19:57,291 ] 47 root - INFO - Exporting the data frame into train and test data frames
+[ 2025-03-16 10:19:57,353 ] 50 root - INFO - Exported the data frame into train and test datasets
+[ 2025-03-16 10:19:57,354 ] 63 root - INFO - Executed the train-test split
+[ 2025-03-16 10:19:57,355 ] 64 root - INFO - Exited initiate_data_ingestion method of DataIngestion class
+[ 2025-03-16 10:19:57,355 ] 71 root - INFO - Data ingestion artifact: DataIngestionArtifact(trained_file_path='artifact/03_16_2025_10_19_47/data_ingestion/ingested/train.csv', test_file_path='artifact/03_16_2025_10_19_47/data_ingestion/ingested/test.csv')
+[ 2025-03-16 10:19:57,360 ] 23 root - INFO - Data ingestion completed successfully.
+[ 2025-03-16 10:19:57,360 ] 30 root - INFO - Starting data validation phase of the TrainPipeline.
+[ 2025-03-16 10:19:57,362 ] 131 root - INFO - Starting data validation.
+[ 2025-03-16 10:19:57,384 ] 39 root - INFO - Is required column present: [True]
+[ 2025-03-16 10:19:57,384 ] 39 root - INFO - Is required column present: [True]
+[ 2025-03-16 10:19:57,384 ] 91 root - INFO - Starting data drift detection using Evidently.
+[ 2025-03-16 10:19:57,384 ] 118 root - ERROR - Error during dataset drift detection: name 'Profile' is not defined
+[ 2025-03-16 10:19:57,384 ] 80 root - ERROR - Error occurred during the training pipeline.
